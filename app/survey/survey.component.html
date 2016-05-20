@@ -1,9 +1,31 @@
-<h1>{{title}}</h1>
-<h2>Surveys</h2>
-<ul class="surveys">
-    <li *ngFor="let survey of surveys"
-        [class.selected]="survey === selectedSurvey"
-        (click)="onSelect(survey)">
-        {{survey.Key}}
-    </li>
-</ul>
+<div class="row">
+    <div class="col-lg-3 col-sm-3">
+        <!-- Row 1 - Widget 1-->
+        <div class="widget widget-shadow">
+        <div class="widget-content">
+            <div class="padding-20">
+                <h2>Surveys</h2>
+                <ul class="surveys">
+                    <li *ngFor="let survey of surveys"
+                        [class.selected]="survey === selectedSurvey"
+                        (click)="onSelect(survey)">
+                        {{survey.Key}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        </div>
+        <!-- End Row 1 - Widget 2 -->
+    </div>
+    <div class="col-lg-9 col-sm-9">
+        <!-- Row 1 - Widget 1-->
+        <div class="widget widget-shadow">
+        <div class="widget-content">
+            <div class="padding-20">
+                <app-survey-detail [survey]="selectedSurvey"></app-survey-detail>
+            </div>
+        </div>
+        </div>
+        <!-- End Row 1 - Widget 2 -->
+    </div>
+</div>
