@@ -1,0 +1,9 @@
+<h1>{{title}}</h1>
+<h2>Surveys</h2>
+<ul class="surveys">
+    <li *ngFor="let survey of surveys"
+        [class.selected]="survey === selectedSurvey"
+        (click)="onSelect(survey)">
+        {{survey.Key}}
+    </li>
+</ul>
