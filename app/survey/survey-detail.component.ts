@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { Survey } from './survey';
 @Component({
   selector: 'app-survey-detail',
@@ -7,4 +7,10 @@ import { Survey } from './survey';
 export class SurveyDetailComponent {
   @Input() 
   survey: Survey;
+  _text: string = 'no change';
+  
+  ngOnChanges() {
+    if (this.survey)
+      this._text = this.survey.Key;
+  }
 }
