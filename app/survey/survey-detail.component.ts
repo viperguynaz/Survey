@@ -1,16 +1,21 @@
+import 'rxjs/Rx'; 
+import { Observable } from 'rxjs/Observable';
 import { Component, Input, OnChanges } from '@angular/core';
-import { Survey } from './survey';
+import { SurveyModel, QuestionModel, QuestionClient } from './survey-engine.service'
+
 @Component({
+    providers: [QuestionClient],
   selector: 'app-survey-detail',
   templateUrl: 'app/survey/survey-detail.component.html'
 })
 export class SurveyDetailComponent {
   @Input() 
-  survey: Survey;
-  _text: string = 'no change';
+  survey: SurveyModel;
+  questions: Observable<Array<QuestionModel>>;
+  constructor(private questionService: QuestionClient) { }
   
   ngOnChanges() {
     if (this.survey)
-      this._text = this.survey.Key;
+      this.questions = this.questionService.all(this.survey.Key);
   }
 }

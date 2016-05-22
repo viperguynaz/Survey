@@ -6,7 +6,7 @@
             <div class="padding-20">
                 <h2>Surveys</h2>
                 <ul class="surveys">
-                    <li *ngFor="let survey of surveys"
+                    <li *ngFor="let survey of surveys | async"
                         [class.selected]="survey === selectedSurvey"
                         (click)="onSelect(survey)">
                         {{survey.Key}}

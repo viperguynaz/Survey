@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import 'rxjs/add/operator/map';
 
 import { HeaderComponent } from './layout/header.component'
 import { FooterComponent } from './layout/footer.component'

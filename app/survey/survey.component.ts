@@ -1,27 +1,28 @@
+import 'rxjs/Rx'; 
+import { Observable } from 'rxjs/Observable';
 import { Component } from '@angular/core';
-import { SurveyService } from './survey.service'
-import { Survey } from './survey';
+import { SurveyModel, SurveyClient } from './survey-engine.service'
 import { SurveyDetailComponent } from './survey-detail.component'
 
 @Component({
-    directives: [ SurveyDetailComponent ],
-    providers: [SurveyService],
+    directives: [SurveyDetailComponent],
+    providers: [SurveyClient],
     selector: 'app-survey',
     styleUrls: ['app/survey/survey-component.css'],
     templateUrl: 'app/survey/survey.component.html'
 })
 export class SurveyComponent { 
     title = 'Survey Admin';
-    surveys: Survey[];
-    selectedSurvey: Survey;
+    surveys: Observable<Array<SurveyModel>>;
+    selectedSurvey: SurveyModel;
 
-    constructor(private surveyService: SurveyService) { }
+    constructor(private surveyService: SurveyClient) { }
     
     getSurveys() {
-        this.surveyService.getSurveys().then(surveys => this.surveys = surveys);
+        this.surveys = this.surveyService.all();
     }
     ngOnInit() {
         this.getSurveys();
     }
-    onSelect(survey: Survey) { this.selectedSurvey = survey; }
+    onSelect(survey: SurveyModel) { this.selectedSurvey = survey; }
 }

@@ -5,5 +5,13 @@
     <div><label><strong>DaysToLive</strong>:&nbsp;</label>{{survey.DaysToLive}}</div>
     <div><label><strong>WorkableTypeKey</strong>:&nbsp;</label>{{survey.WorkableTypeKey}}</div>
     
-    <div>changed - {{_text}}</div>
+    <div>
+        <h3>Questions</h3>
+        <ul>
+            <li *ngFor="let question of questions | async"
+                (click)="onSelect(question)">
+                {{question.Name}}
+            </li>
+        </ul>
+    </div>
 </div>
