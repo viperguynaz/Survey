@@ -11,7 +11,7 @@ import { SurveyModel, QuestionModel, QuestionClient } from './survey-engine.serv
 export class SurveyDetailComponent {
   @Input() 
   survey: SurveyModel;
-  questions: Observable<Array<QuestionModel>>;
+  questions: Observable<QuestionModel[]>;
   constructor(private questionService: QuestionClient) { }
   
   ngOnChanges() {

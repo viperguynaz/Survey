@@ -13,7 +13,7 @@ import { SurveyDetailComponent } from './survey-detail.component'
 })
 export class SurveyComponent { 
     title = 'Survey Admin';
-    surveys: Observable<Array<SurveyModel>>;
+    surveys: Observable<SurveyModel[]>;
     selectedSurvey: SurveyModel;
 
     constructor(private surveyService: SurveyClient) { }
